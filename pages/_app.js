@@ -1,7 +1,7 @@
 import React from "react";
 import App from "next/app";
 import Login from "./login";
-import { fetchUserData } from "../helpers/loginHelper";
+import { fetchUserData } from "../helpers/helperLogin";
 import "./scss/global.scss";
 
 export default class MyApp extends App {
