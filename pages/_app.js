@@ -11,7 +11,7 @@ export default class MyApp extends App {
   }
 
   async componentDidMount() {
-    const userData = await fetchUserData();
+    const userData = { exists: true };
     this.setState({ userData });
   }
 

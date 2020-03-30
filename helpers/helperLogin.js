@@ -1,24 +1,7 @@
-export const fetchUserData = async () => {
-  return { exists: true };
-};
+import { lsSetItem } from "./helperLocalStorage";
 
-// export const loginFetch = async data => {
-//   const response = await fetch("/api/userLogin", {
-//     method: "POST",
-//     credentials: "same-origin",
-//     headers: {
-//       "Content-Type": "application/json"
-//     },
-//     body: JSON.stringify(data)
-//   });
-//   const json = await response.json();
-//   console.log(`json: `, json);
-
-//   return json;
-// };
-
-export const registerUser = async data => {
-  const response = await fetch("/api/userRegister", {
+const postRequest = async (url, data) => {
+  const response = await fetch(url, {
     method: "POST",
     credentials: "same-origin",
     headers: {
@@ -28,4 +11,14 @@ export const registerUser = async data => {
   });
   const json = await response.json();
   return json;
+};
+
+export const loginUser = async data => {
+  const loggedInUser = await postRequest("/api/userLogin", data);
+  lsSetItem(loggedInUser);
+  return loggedInUser;
+};
+
+export const registerUser = async data => {
+  return await postRequest("/api/userRegister", data);
 };

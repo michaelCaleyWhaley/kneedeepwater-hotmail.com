@@ -1,0 +1,1 @@
+export const mongoAddress = "mongodb://localhost/caley";
